@@ -29,14 +29,7 @@
         };
     };
 
-    combos {
-        compatible = "zmk,combos";
-
-        Layer_3 {
-            bindings = <&tog 3>;
-            key-positions = <37 40>;
-        };
-    };
+    combos { compatible = "zmk,combos"; };
 
     keymap {
         compatible = "zmk,keymap";
