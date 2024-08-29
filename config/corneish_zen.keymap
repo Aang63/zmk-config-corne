@@ -29,7 +29,14 @@
         };
     };
 
-    combos { compatible = "zmk,combos"; };
+    combos {
+        compatible = "zmk,combos";
+
+        Settings {
+            bindings = <&tog 4>;
+            key-positions = <37 40>;
+        };
+    };
 
     keymap {
         compatible = "zmk,keymap";
@@ -61,10 +68,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&trans  &kp N1           &kp N2          &kp N3             &kp N4            &kp N5             &kp N6           &kp N7           &kp N8           &kp N9           &kp N0    &kp BSPC
-&trans  &bt BT_CLR_ALL   &bt BT_SEL 0    &bt BT_SEL 1       &bt BT_SEL 2      &bt BT_SEL 3       &kp LEFT         &kp DOWN         &kp UP           &kp RIGHT        &kp HOME  &kp PG_UP
-&trans  &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &ext_power EP_OFF  &ext_power EP_ON  &rgb_ug RGB_EFF    &rgb_ug RGB_EFR  &rgb_ug RGB_SPI  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp END   &kp PG_DN
-                                         &trans             &to 2             &trans             &kp INS          &to 0            &kp DEL
+&trans  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5    &kp N6    &kp N7    &kp N8   &kp N9     &kp N0    &kp BSPC
+&trans  &trans  &trans  &trans  &trans  &trans    &kp LEFT  &kp DOWN  &kp UP   &kp RIGHT  &kp HOME  &kp PG_UP
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans    &trans   &trans     &kp END   &kp PG_DN
+                        &trans  &to 2   &trans    &kp INS   &to 0     &kp DEL
             >;
         };
 
@@ -88,10 +95,19 @@
         layer_3 {
             display-name = "Fn";
             bindings = <
-&trans  &kp F1  &kp F2  &kp F3  &kp F4        &kp F5          &kp F6       &kp F7  &kp F8  &kp F9  &kp F10          &kp F11
-&trans  &trans  &trans  &trans  &sys_reset    &bootloader     &bootloader  &trans  &trans  &trans  &kp PRINTSCREEN  &kp F12
-&trans  &trans  &trans  &trans  &out OUT_USB  &out OUT_BLE    &trans       &trans  &trans  &trans  &kp SCROLLLOCK   &kp PAUSE_BREAK
-                        &trans  &to 0         &trans          &trans       &to 2   &trans
+&trans  &kp F1   &kp F2   &kp F3  &kp F4  &kp F5    &kp F6  &kp F7  &kp F8  &kp F9  &kp F10          &trans
+&trans  &kp F11  &kp F12  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &kp PRINTSCREEN  &trans
+&trans  &trans   &trans   &trans  &trans  &trans    &trans  &trans  &trans  &trans  &kp SCROLLLOCK   &kp PAUSE_BREAK
+                          &trans  &to 0   &trans    &trans  &to 2   &trans
+            >;
+        };
+
+        layer_4 {
+            bindings = <
+&bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4     &bt BT_CLR_ALL     &out OUT_TOG                       &ext_power EP_TOG  &trans           &trans           &trans           &trans
+&rgb_ug RGB_TOG  &rgb_ug RGB_EFF  &rgb_ug RGB_SPI  &rgb_ug RGB_SPD  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD    &rgb_ug RGB_COLOR_HSB(242,100,50)  &rgb_ug RGB_HUI    &rgb_ug RGB_HUD  &rgb_ug RGB_SAI  &rgb_ug RGB_SAD  &trans
+&trans           &trans           &trans           &trans           &trans           &trans             &trans                             &trans             &trans           &trans           &trans           &trans
+                                                   &sys_reset       &trans           &bootloader        &bootloader                        &trans             &trans
             >;
         };
     };
